@@ -39,11 +39,12 @@ class MeditationWatchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return const DefaultTabController(
+      initialIndex: 1,
       length: 2,
       child: Column(
         children: [
-          const TabBar(
+          TabBar(
             tabs: [
               Tab(
                 child: Text('Stopwatch'),
@@ -53,30 +54,12 @@ class MeditationWatchView extends StatelessWidget {
               ),
             ],
           ),
-          Theme(
-            data: Theme.of(context).copyWith(
-              iconButtonTheme: IconButtonThemeData(
-                style: ButtonStyle(
-                  iconSize: WidgetStateProperty.all(42),
-                  shape: WidgetStateProperty.all(
-                    RoundedRectangleBorder(
-                      side: const BorderSide(
-                        color: Colors.black54,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(200),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            child: const Expanded(
-              child: TabBarView(
-                children: [
-                  WatchView(),
-                  HistoryView(),
-                ],
-              ),
+          Expanded(
+            child: TabBarView(
+              children: [
+                WatchView(),
+                HistoryView(),
+              ],
             ),
           )
         ],

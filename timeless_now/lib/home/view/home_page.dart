@@ -8,7 +8,7 @@ import 'package:timeless_now/meditation_watch/view/meditation_watch_page.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final pageController = PageController(initialPage: 1);
+  final pageController = PageController(initialPage: 0);
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
