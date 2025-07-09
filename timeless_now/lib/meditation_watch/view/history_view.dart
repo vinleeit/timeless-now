@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:timeless_now/meditation_watch/bloc/history_bloc.dart';
 import 'package:timeless_now/meditation_watch/widgets/history_card.dart';
+import 'package:timeless_now/meditation_watch/widgets/history_detail_bottom_sheet.dart';
 import 'package:timeless_now/models/meditation_record.dart';
 
 class HistoryView extends StatelessWidget {
@@ -67,6 +68,18 @@ class HistoryView extends StatelessWidget {
                     id: meditationRecord.id,
                   ),
                 );
+          },
+          onDetail: (meditationRecord) {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              showDragHandle: true,
+              builder: (context) {
+                return HistoryDetailBottomSheet(
+                  meditationRecord: meditationRecord,
+                );
+              },
+            );
           },
         ),
       );

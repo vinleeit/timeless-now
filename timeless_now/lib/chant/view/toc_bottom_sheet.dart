@@ -42,8 +42,8 @@ class _TocBottomSheetState extends State<TocBottomSheet>
                   child: Scrollbar(
                     child: ListView.builder(
                       itemCount: widget.chants.length,
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
                       itemBuilder: (context, index) {
                         final chant = widget.chants[index];
                         return Padding(
@@ -60,7 +60,9 @@ class _TocBottomSheetState extends State<TocBottomSheet>
                             onTap: () {
                               Navigator.pop(
                                 context,
-                                (chant.id == widget.currentChant.id) ? null : chant,
+                                (chant.id == widget.currentChant.id)
+                                    ? null
+                                    : chant,
                               );
                             },
                             trailing: (chant == widget.currentChant)

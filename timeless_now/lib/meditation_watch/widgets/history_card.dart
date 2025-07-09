@@ -11,16 +11,18 @@ class HistoryCard extends StatelessWidget {
     this.leadingSpacing = 10,
     this.trailingSpacing = 8,
     this.onDelete,
+    this.onDetail,
     super.key,
   });
 
   final MeditationRecord meditationRecord;
-  final void Function(MeditationRecord)? onDelete;
   final EdgeInsets cardPadding;
   final EdgeInsets cardMargin;
   final EdgeInsets contentPadding;
   final double leadingSpacing;
   final double trailingSpacing;
+  final void Function(MeditationRecord)? onDelete;
+  final void Function(MeditationRecord)? onDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +130,9 @@ class HistoryCard extends StatelessWidget {
                       return [
                         PopupMenuItem<String>(
                           value: 'Detail',
-                          onTap: null,
+                          onTap: onDetail == null
+                              ? null
+                              : () => onDetail!(meditationRecord),
                           child: const Text('Detail'),
                         ),
                         PopupMenuItem<String>(
