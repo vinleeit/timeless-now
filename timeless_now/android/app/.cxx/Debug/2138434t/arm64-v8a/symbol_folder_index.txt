@@ -1,0 +1,1 @@
+/home/xiaoming/Works/com.github.vinleeit/tiratana_upasana/app/timeless_now/build/app/intermediates/cxx/Debug/2138434t/obj/arm64-v8a

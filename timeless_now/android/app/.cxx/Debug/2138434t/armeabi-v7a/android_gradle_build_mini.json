@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/home/xiaoming/Libs/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/xiaoming/Libs/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/xiaoming/Works/com.github.vinleeit/tiratana_upasana/app/timeless_now/android/app/.cxx/Debug/2138434t/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/xiaoming/Libs/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/xiaoming/Works/com.github.vinleeit/tiratana_upasana/app/timeless_now/android/app/.cxx/Debug/2138434t/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
