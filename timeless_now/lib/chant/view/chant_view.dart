@@ -4,9 +4,9 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:timeless_now/chant/bloc/chant_bloc.dart';
 import 'package:timeless_now/chant/models/chant.dart';
-import 'package:timeless_now/chant/view/language_bottom_sheet.dart';
 import 'package:timeless_now/chant/view/settings_bottom_sheet.dart';
-import 'package:timeless_now/chant/view/toc_bottom_sheet.dart';
+import 'package:timeless_now/chant/widgets/language_bottom_sheet.dart';
+import 'package:timeless_now/chant/widgets/toc_bottom_sheet.dart';
 
 class ChantView extends StatelessWidget {
   const ChantView({super.key});
@@ -23,8 +23,8 @@ class ChantView extends StatelessWidget {
         showDragHandle: true,
         builder: (context) {
           return TocBottomSheet(
-            currentChant: currentChant,
-            chants: chants.toList(),
+            selectedChant: currentChant,
+            chants: chants..toList(),
           );
         },
       ).then(
@@ -50,10 +50,10 @@ class ChantView extends StatelessWidget {
         showDragHandle: true,
         builder: (context) {
           return LanguageBottomSheet(
-            currentIso: currentContent.iso,
+            selectedIso: currentContent.iso,
             isos: currentChant.contents.map((element) => element.iso).toList()
-              ..removeWhere(
-                (element) => element == currentContent.iso,
+              ..sort(
+                (a, b) => a.compareTo(b),
               ),
           );
         },
