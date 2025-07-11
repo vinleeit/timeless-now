@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:timeless_now/chant/view/chant_page.dart';
+import 'package:timeless_now/meditation_watch/view/meditation_watch_page.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({
-    required this.controller,
-    super.key,
-  });
-
-  final PageController controller;
+  const AppDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Padding(
         padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + 12,
+          top: MediaQuery
+              .of(context)
+              .padding
+              .top + 12,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,9 +32,12 @@ class AppDrawer extends StatelessWidget {
                   children: [
                     Text(
                       'Tiratana Upasana',
-                      style: Theme.of(context).textTheme.headlineSmall,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .headlineSmall,
                     ),
-                    const Text('Version 1.0.1'),
+                    const Text('Version 1.0.1+1'),
                   ],
                 ),
               ),
@@ -45,12 +48,18 @@ class AppDrawer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  for (final (index, title)
-                      in ['Meditation Watch', 'Chant'].indexed)
+                  for (final map
+                  in {
+                    'Meditation Watch': MeditationWatchPage.routeName,
+                    'Chant': ChantPage.routeName,
+                  }.entries)
                     ElevatedButton(
                       onPressed: () {
-                        controller.jumpToPage(index);
                         Navigator.pop(context);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          map.value,
+                        );
                       },
                       style: ButtonStyle(
                         shape: WidgetStateProperty.all(
@@ -58,21 +67,21 @@ class AppDrawer extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        backgroundColor: WidgetStateProperty.all(
-                          (index == controller.page)
-                              ? Theme.of(context).primaryColor
-                              : null,
-                        ),
-                        foregroundColor: WidgetStateProperty.all(
-                          (index == controller.page) ? Colors.white : null,
-                        ),
-                        overlayColor: WidgetStateProperty.all(
-                          (index == controller.page)
-                              ? Colors.white.withAlpha(20)
-                              : null,
-                        ),
+                        // backgroundColor: WidgetStateProperty.all(
+                        //   (index == controller.page)
+                        //       ? Theme.of(context).primaryColor
+                        //       : null,
+                        // ),
+                        // foregroundColor: WidgetStateProperty.all(
+                        //   (index == controller.page) ? Colors.white : null,
+                        // ),
+                        // overlayColor: WidgetStateProperty.all(
+                        //   (index == controller.page)
+                        //       ? Colors.white.withAlpha(20)
+                        //       : null,
+                        // ),
                       ),
-                      child: Text(title),
+                      child: Text(map.key),
                     ),
                 ],
               ),

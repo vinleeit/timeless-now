@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:markdown/markdown.dart' as md;
-import 'package:provider/provider.dart';
+import 'package:timeless_now/app/view/app_drawer.dart';
 import 'package:timeless_now/chant/bloc/chant_bloc.dart';
 import 'package:timeless_now/chant/models/chant.dart';
 import 'package:timeless_now/chant/view/settings_bottom_sheet.dart';
 import 'package:timeless_now/chant/widgets/language_bottom_sheet.dart';
 import 'package:timeless_now/chant/widgets/toc_bottom_sheet.dart';
-import 'package:timeless_now/home/view/app_drawer.dart';
 
 class ChantView extends StatelessWidget {
   const ChantView({super.key});
@@ -69,7 +68,7 @@ class ChantView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Chant'),
       ),
-      drawer: AppDrawer(controller: Provider.of<PageController>(context)),
+      drawer: const AppDrawer(),
       bottomSheet: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 32,

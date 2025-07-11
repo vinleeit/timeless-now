@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
-import 'package:timeless_now/home/view/app_drawer.dart';
+import 'package:timeless_now/app/view/app_drawer.dart';
 import 'package:timeless_now/meditation_watch/bloc/history_bloc.dart';
 import 'package:timeless_now/meditation_watch/bloc/stopwatch_bloc.dart';
 import 'package:timeless_now/meditation_watch/view/history_view.dart';
@@ -11,6 +10,8 @@ import 'package:timeless_now/repositories/meditation_record_repository.dart';
 
 class MeditationWatchPage extends StatelessWidget {
   const MeditationWatchPage({super.key});
+
+  static String get routeName => '/watch';
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +46,7 @@ class MeditationWatchView extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        drawer: AppDrawer(
-          controller: Provider.of<PageController>(context, listen: false),
-        ),
+        drawer: const AppDrawer(),
         appBar: AppBar(
           title: const Text('Meditation Watch'),
           bottom: const TabBar(

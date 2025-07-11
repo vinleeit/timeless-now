@@ -7,6 +7,8 @@ import 'package:timeless_now/repositories/app_cache_repository.dart';
 class ChantPage extends StatelessWidget {
   const ChantPage({super.key});
 
+  static String get routeName => '/chant';
+
   @override
   Widget build(BuildContext context) {
     final appCacheRepository = context.read<AppCacheRepository>();
