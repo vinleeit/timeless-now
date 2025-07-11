@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:timeless_now/home/models/page_index_model.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({
@@ -17,75 +15,69 @@ class AppDrawer extends StatelessWidget {
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top + 12,
         ),
-        child: Consumer<PageIndexModel>(
-          builder: (context, value, _) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Card(
-                  margin: const EdgeInsets.only(right: 16),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.horizontal(
-                      right: Radius.circular(8),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Tiratana Upasana',
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                        const Text('Version 1.0.0+9'),
-                      ],
-                    ),
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Card(
+              margin: const EdgeInsets.only(right: 16),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.horizontal(
+                  right: Radius.circular(8),
                 ),
-                const SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      for (final (index, title)
-                          in ['Meditation Watch', 'Chant'].indexed)
-                        ElevatedButton(
-                          onPressed: () {
-                            controller.jumpToPage(index);
-                            Provider.of<PageIndexModel>(context, listen: false)
-                                .updateIndex(index);
-                            Navigator.pop(context);
-                          },
-                          style: ButtonStyle(
-                            shape: WidgetStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(60),
-                              ),
-                            ),
-                            backgroundColor: WidgetStateProperty.all(
-                              (index == value.index)
-                                  ? Theme.of(context).primaryColor
-                                  : null,
-                            ),
-                            foregroundColor: WidgetStateProperty.all(
-                              (index == value.index) ? Colors.white : null,
-                            ),
-                            overlayColor: WidgetStateProperty.all(
-                              (index == value.index)
-                                  ? Colors.white.withAlpha(20)
-                                  : null,
-                            ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Tiratana Upasana',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    const Text('Version 1.0.1'),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (final (index, title)
+                      in ['Meditation Watch', 'Chant'].indexed)
+                    ElevatedButton(
+                      onPressed: () {
+                        controller.jumpToPage(index);
+                        Navigator.pop(context);
+                      },
+                      style: ButtonStyle(
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Text(title),
                         ),
-                    ],
-                  ),
-                ),
-              ],
-            );
-          },
+                        backgroundColor: WidgetStateProperty.all(
+                          (index == controller.page)
+                              ? Theme.of(context).primaryColor
+                              : null,
+                        ),
+                        foregroundColor: WidgetStateProperty.all(
+                          (index == controller.page) ? Colors.white : null,
+                        ),
+                        overlayColor: WidgetStateProperty.all(
+                          (index == controller.page)
+                              ? Colors.white.withAlpha(20)
+                              : null,
+                        ),
+                      ),
+                      child: Text(title),
+                    ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

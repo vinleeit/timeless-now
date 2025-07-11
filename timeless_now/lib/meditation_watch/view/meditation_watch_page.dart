@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:timeless_now/home/view/app_drawer.dart';
 import 'package:timeless_now/meditation_watch/bloc/history_bloc.dart';
 import 'package:timeless_now/meditation_watch/bloc/stopwatch_bloc.dart';
 import 'package:timeless_now/meditation_watch/view/history_view.dart';
@@ -39,12 +41,16 @@ class MeditationWatchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
-      initialIndex: 1,
+    return DefaultTabController(
+      initialIndex: 0,
       length: 2,
-      child: Column(
-        children: [
-          TabBar(
+      child: Scaffold(
+        drawer: AppDrawer(
+          controller: Provider.of<PageController>(context, listen: false),
+        ),
+        appBar: AppBar(
+          title: const Text('Meditation Watch'),
+          bottom: const TabBar(
             tabs: [
               Tab(
                 child: Text('Stopwatch'),
@@ -54,15 +60,22 @@ class MeditationWatchView extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(
-            child: TabBarView(
-              children: [
-                WatchView(),
-                HistoryView(),
-              ],
-            ),
-          )
-        ],
+        ),
+        body: const Padding(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            children: [
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    WatchView(),
+                    HistoryView(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

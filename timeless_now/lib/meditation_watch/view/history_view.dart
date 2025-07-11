@@ -107,7 +107,7 @@ class HistoryView extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return widgets.elementAt(index);
           },
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.only(bottom: 36, top: 16),
         );
       },
     );
