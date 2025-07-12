@@ -120,7 +120,7 @@ class ChantView extends StatelessWidget {
                     const SizedBox(width: 8),
                     IconButton(
                       onPressed:
-                          (state.currentChantIndex == state.chants.length - 1)
+                          (state.currentChantIndex >= state.chants.length - 1)
                               ? null
                               : () => context.read<ChantBloc>().add(
                                     ChangeChant(

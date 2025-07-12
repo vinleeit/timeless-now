@@ -10,10 +10,7 @@ class AppDrawer extends StatelessWidget {
     return Drawer(
       child: Padding(
         padding: EdgeInsets.only(
-          top: MediaQuery
-              .of(context)
-              .padding
-              .top + 12,
+          top: MediaQuery.of(context).padding.top + 12,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,12 +29,9 @@ class AppDrawer extends StatelessWidget {
                   children: [
                     Text(
                       'Tiratana Upasana',
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .headlineSmall,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    const Text('Version 1.0.1+1'),
+                    const Text('Version 1.0.1+2'),
                   ],
                 ),
               ),
@@ -48,14 +42,12 @@ class AppDrawer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  for (final map
-                  in {
+                  for (final map in {
                     'Meditation Watch': MeditationWatchPage.routeName,
                     'Chant': ChantPage.routeName,
                   }.entries)
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
                         Navigator.pushReplacementNamed(
                           context,
                           map.value,
@@ -67,19 +59,21 @@ class AppDrawer extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        // backgroundColor: WidgetStateProperty.all(
-                        //   (index == controller.page)
-                        //       ? Theme.of(context).primaryColor
-                        //       : null,
-                        // ),
-                        // foregroundColor: WidgetStateProperty.all(
-                        //   (index == controller.page) ? Colors.white : null,
-                        // ),
-                        // overlayColor: WidgetStateProperty.all(
-                        //   (index == controller.page)
-                        //       ? Colors.white.withAlpha(20)
-                        //       : null,
-                        // ),
+                        backgroundColor: WidgetStateProperty.all(
+                          (map.value == ModalRoute.of(context)?.settings.name)
+                              ? Theme.of(context).primaryColor
+                              : null,
+                        ),
+                        foregroundColor: WidgetStateProperty.all(
+                          (map.value == ModalRoute.of(context)?.settings.name)
+                              ? Colors.white
+                              : null,
+                        ),
+                        overlayColor: WidgetStateProperty.all(
+                          (map.value == ModalRoute.of(context)?.settings.name)
+                              ? Colors.white.withAlpha(20)
+                              : null,
+                        ),
                       ),
                       child: Text(map.key),
                     ),

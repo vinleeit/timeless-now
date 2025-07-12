@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:timeless_now/meditation_watch/utils/time_utils.dart';
 import 'package:timeless_now/models/meditation_record.dart';
 
 class HistoryDetailBottomSheet extends StatefulWidget {
@@ -27,18 +28,9 @@ class _HistoryDetailBottomSheetState extends State<HistoryDetailBottomSheet>
     final timeStr =
         DateFormat.Hms().format(meditationRecord.meditationStartTime);
 
-    final duration = meditationRecord.meditationDuration / 1000;
-    var durationUnit = 'second${duration == 1 ? '' : 's'}';
-    var durationStr = duration.toStringAsFixed(0);
-    if (duration > 3600) {
-      final dur = duration / 3600;
-      durationUnit = 'hour${dur == 1 ? '' : 's'}';
-      durationStr = dur.toStringAsFixed(1);
-    } else if (duration > 60) {
-      final dur = duration / 60;
-      durationUnit = 'minutes${dur == 1 ? '' : 's'}';
-      durationStr = dur.toStringAsFixed(0);
-    }
+    final (durationStr, durationUnit) = millisecondsToBiggestTimeUnit(
+      meditationRecord.meditationDuration,
+    );
 
     return BottomSheet(
       onClosing: () {},
@@ -131,10 +123,14 @@ class _HistoryDetailBottomSheetState extends State<HistoryDetailBottomSheet>
                     spacing: 8,
                     children: [
                       Text(
-                        'Commentary',
+                        'Note',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
-                      Text(meditationRecord.meditationNote),
+                      Text(
+                        meditationRecord.meditationNote.isEmpty
+                            ? '(empty)'
+                            : meditationRecord.meditationNote,
+                      ),
                     ],
                   ),
                 ],

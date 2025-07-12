@@ -41,20 +41,3 @@ final class MeditationTimerStopped extends MeditationTimerState {
         note,
       ];
 }
-
-final class MeditationTimerRecordSaved extends MeditationTimerState {
-  const MeditationTimerRecordSaved({
-    required super.startTime,
-    required super.elapsed,
-    required this.note,
-  });
-
-  final String note;
-
-  @override
-  List<Object?> get props => [
-        super.startTime,
-        super.elapsed,
-        note,
-      ];
-}

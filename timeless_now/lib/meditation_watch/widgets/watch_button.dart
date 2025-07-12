@@ -22,9 +22,11 @@ class WatchButton extends StatelessWidget {
         ),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 14,
-          ),
+            vertical: 18,
+          ).copyWith(left: 18, right: 24),
+        ),
+        shape: WidgetStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         ),
       ),
       icon: Icon(
