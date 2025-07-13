@@ -31,7 +31,7 @@ class AppDrawer extends StatelessWidget {
                       'Tiratana Upasana',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    const Text('Version 1.0.1+2'),
+                    const Text('Version 1.0.1+3'),
                   ],
                 ),
               ),

@@ -27,7 +27,7 @@ final class StopTimer extends MeditationTimerEvent {
 }
 
 final class UpdateNote extends MeditationTimerEvent {
-  const UpdateNote({required this.note});
+  const UpdateNote({this.note = ''});
 
   final String note;
 

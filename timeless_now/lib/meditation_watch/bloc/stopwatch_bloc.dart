@@ -10,6 +10,7 @@ import 'package:timeless_now/repositories/app_cache_repository.dart';
 import 'package:timeless_now/repositories/meditation_record_repository.dart';
 
 part 'stopwatch_event.dart';
+
 part 'stopwatch_state.dart';
 
 class StopwatchBloc extends Bloc<MeditationTimerEvent, MeditationTimerState> {
@@ -102,6 +103,7 @@ class StopwatchBloc extends Bloc<MeditationTimerEvent, MeditationTimerState> {
 
   void _onUpdateNote(UpdateNote event, Emitter<MeditationTimerState> emit) {
     if (state is MeditationTimerStopped) {
+      print(event.note);
       final currentState = state as MeditationTimerStopped;
       emit(
         MeditationTimerStopped(
