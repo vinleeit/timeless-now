@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeless_now/chant/bloc/chant_bloc.dart';
 import 'package:timeless_now/chant/view/chant_view.dart';
-import 'package:timeless_now/repositories/app_cache_repository.dart';
+import 'package:timeless_now/repositories/cache/chant_cache_repository.dart';
 
 class ChantPage extends StatelessWidget {
   const ChantPage({super.key});
@@ -11,12 +11,12 @@ class ChantPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appCacheRepository = context.read<AppCacheRepository>();
+    final appCacheRepository = context.read<ChantCacheRepository>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (_) => ChantBloc(
-            appCacheRepository: appCacheRepository,
+            chantCacheRepository: appCacheRepository,
           )..add(InitializeChant()),
         ),
       ],

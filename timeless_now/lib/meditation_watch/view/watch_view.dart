@@ -29,9 +29,14 @@ class WatchView extends StatelessWidget {
       child: BlocBuilder<StopwatchBloc, MeditationTimerState>(
         buildWhen: (prev, cur) {
           /// Build when:
+          /// - Prev is initial, change any state that is loaded from cache
           /// - Cur is stopped and prev is running, changing to next view.
           /// - Cur is initial when prev is stopped, changing the view to
           ///   original.
+          if (prev is MeditationTimerInitial) {
+            return true;
+          }
+
           if (cur is MeditationTimerStopped && prev is MeditationTimerRunning) {
             return true;
           }
@@ -45,7 +50,9 @@ class WatchView extends StatelessWidget {
           return Builder(
             builder: (context) {
               if (state is MeditationTimerStopped) {
-                return const WatchSummaryView();
+                return WatchSummaryView(
+                  initialNote: state.note,
+                );
               }
               return const WatchClockView();
             },

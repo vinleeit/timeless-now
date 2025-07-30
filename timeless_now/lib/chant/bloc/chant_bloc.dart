@@ -6,15 +6,15 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:timeless_now/chant/models/chant.dart';
-import 'package:timeless_now/repositories/app_cache_repository.dart';
+import 'package:timeless_now/repositories/cache/chant_cache_repository.dart';
 
 part 'chant_event.dart';
 part 'chant_state.dart';
 
 class ChantBloc extends Bloc<ChantEvent, ChantState> {
   ChantBloc({
-    required AppCacheRepository appCacheRepository,
-  })  : _appCacheRepository = appCacheRepository,
+    required ChantCacheRepository chantCacheRepository,
+  })  : _chantCacheRepository = chantCacheRepository,
         super(const ChantInitialState()) {
     on<InitializeChant>(_onInitializeChant);
     on<LoadChantFromJsonFile>(_onLoadChantFromJsonFile);
@@ -23,18 +23,18 @@ class ChantBloc extends Bloc<ChantEvent, ChantState> {
     on<ChangeFontSize>(_onChangeFontSize);
   }
 
-  final AppCacheRepository _appCacheRepository;
+  final ChantCacheRepository _chantCacheRepository;
 
   FutureOr<void> _onInitializeChant(
     InitializeChant event,
     Emitter<ChantState> emit,
   ) {
-    final filePath = _appCacheRepository.data.chantJsonPath;
+    final filePath = _chantCacheRepository.data.chantJsonPath;
     if (filePath.isNotEmpty) {
       final file = File(filePath);
       if (!file.existsSync()) {
         // Cached file path does not exist
-        _appCacheRepository
+        _chantCacheRepository
           ..data.chantJsonPath = ''
           ..flush();
         // TODO: show error
@@ -87,7 +87,7 @@ class ChantBloc extends Bloc<ChantEvent, ChantState> {
             ),
           )
           .toList();
-      _appCacheRepository
+      _chantCacheRepository
         ..data.chantJsonPath = filePath
         ..flush();
 

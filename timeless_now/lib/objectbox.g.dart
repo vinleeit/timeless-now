@@ -14,40 +14,13 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_sync_flutter_libs/objectbox_sync_flutter_libs.dart';
 
-import 'models/app_cache.dart';
 import 'models/meditation_record.dart';
+import 'repositories/cache/chant_cache_repository.dart';
+import 'repositories/cache/watch_cache_repository.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <obx_int.ModelEntity>[
-  obx_int.ModelEntity(
-    id: const obx_int.IdUid(1, 1929920104100698143),
-    name: 'AppCache',
-    lastPropertyId: const obx_int.IdUid(3, 5403878557590192250),
-    flags: 0,
-    properties: <obx_int.ModelProperty>[
-      obx_int.ModelProperty(
-        id: const obx_int.IdUid(1, 6616827391750416634),
-        name: 'id',
-        type: 6,
-        flags: 1,
-      ),
-      obx_int.ModelProperty(
-        id: const obx_int.IdUid(2, 8484852593009153436),
-        name: 'cachedMeditationWatchStartTime',
-        type: 10,
-        flags: 0,
-      ),
-      obx_int.ModelProperty(
-        id: const obx_int.IdUid(3, 5403878557590192250),
-        name: 'chantJsonPath',
-        type: 9,
-        flags: 0,
-      ),
-    ],
-    relations: <obx_int.ModelRelation>[],
-    backlinks: <obx_int.ModelBacklink>[],
-  ),
   obx_int.ModelEntity(
     id: const obx_int.IdUid(2, 6949642974877216044),
     name: 'MeditationRecord',
@@ -75,6 +48,62 @@ final _entities = <obx_int.ModelEntity>[
       obx_int.ModelProperty(
         id: const obx_int.IdUid(4, 6288952347734034313),
         name: 'meditationNote',
+        type: 9,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[],
+  ),
+  obx_int.ModelEntity(
+    id: const obx_int.IdUid(3, 4219723709065808279),
+    name: 'ChantCache',
+    lastPropertyId: const obx_int.IdUid(3, 284770491881884666),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 6566735793837556905),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(3, 284770491881884666),
+        name: 'chantJsonPath',
+        type: 9,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[],
+  ),
+  obx_int.ModelEntity(
+    id: const obx_int.IdUid(4, 4490759528521803291),
+    name: 'WatchCache',
+    lastPropertyId: const obx_int.IdUid(5, 2123220754852059554),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 5953587341173696777),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(2, 8191091518484814759),
+        name: 'cachedMeditationWatchStartTime',
+        type: 10,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(4, 2589957026637105673),
+        name: 'elapsed',
+        type: 6,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(5, 2123220754852059554),
+        name: 'note',
         type: 9,
         flags: 0,
       ),
@@ -122,13 +151,19 @@ Future<obx.Store> openStore({
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(2, 6949642974877216044),
+    lastEntityId: const obx_int.IdUid(4, 4490759528521803291),
     lastIndexId: const obx_int.IdUid(0, 0),
     lastRelationId: const obx_int.IdUid(0, 0),
     lastSequenceId: const obx_int.IdUid(0, 0),
-    retiredEntityUids: const [],
+    retiredEntityUids: const [1929920104100698143],
     retiredIndexUids: const [],
-    retiredPropertyUids: const [],
+    retiredPropertyUids: const [
+      6616827391750416634,
+      8484852593009153436,
+      5403878557590192250,
+      1178143364910113680,
+      4144645317619590000,
+    ],
     retiredRelationUids: const [],
     modelVersion: 5,
     modelVersionParserMinimum: 5,
@@ -136,50 +171,8 @@ obx_int.ModelDefinition getObjectBoxModel() {
   );
 
   final bindings = <Type, obx_int.EntityDefinition>{
-    AppCache: obx_int.EntityDefinition<AppCache>(
-      model: _entities[0],
-      toOneRelations: (AppCache object) => [],
-      toManyRelations: (AppCache object) => {},
-      getId: (AppCache object) => object.id,
-      setId: (AppCache object, int id) {
-        object.id = id;
-      },
-      objectToFB: (AppCache object, fb.Builder fbb) {
-        final chantJsonPathOffset = fbb.writeString(object.chantJsonPath);
-        fbb.startTable(4);
-        fbb.addInt64(0, object.id);
-        fbb.addInt64(
-          1,
-          object.cachedMeditationWatchStartTime?.millisecondsSinceEpoch,
-        );
-        fbb.addOffset(2, chantJsonPathOffset);
-        fbb.finish(fbb.endTable());
-        return object.id;
-      },
-      objectFromFB: (obx.Store store, ByteData fbData) {
-        final buffer = fb.BufferContext(fbData);
-        final rootOffset = buffer.derefObject(0);
-        final cachedMeditationWatchStartTimeValue = const fb.Int64Reader()
-            .vTableGetNullable(buffer, rootOffset, 6);
-        final cachedMeditationWatchStartTimeParam =
-            cachedMeditationWatchStartTimeValue == null
-            ? null
-            : DateTime.fromMillisecondsSinceEpoch(
-                cachedMeditationWatchStartTimeValue,
-              );
-        final chantJsonPathParam = const fb.StringReader(
-          asciiOptimization: true,
-        ).vTableGet(buffer, rootOffset, 8, '');
-        final object = AppCache(
-          cachedMeditationWatchStartTime: cachedMeditationWatchStartTimeParam,
-          chantJsonPath: chantJsonPathParam,
-        )..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-
-        return object;
-      },
-    ),
     MeditationRecord: obx_int.EntityDefinition<MeditationRecord>(
-      model: _entities[1],
+      model: _entities[0],
       toOneRelations: (MeditationRecord object) => [],
       toManyRelations: (MeditationRecord object) => {},
       getId: (MeditationRecord object) => object.id,
@@ -220,48 +213,143 @@ obx_int.ModelDefinition getObjectBoxModel() {
         return object;
       },
     ),
+    ChantCache: obx_int.EntityDefinition<ChantCache>(
+      model: _entities[1],
+      toOneRelations: (ChantCache object) => [],
+      toManyRelations: (ChantCache object) => {},
+      getId: (ChantCache object) => object.id,
+      setId: (ChantCache object, int id) {
+        object.id = id;
+      },
+      objectToFB: (ChantCache object, fb.Builder fbb) {
+        final chantJsonPathOffset = fbb.writeString(object.chantJsonPath);
+        fbb.startTable(4);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(2, chantJsonPathOffset);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final chantJsonPathParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 8, '');
+        final object = ChantCache(chantJsonPath: chantJsonPathParam)
+          ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+
+        return object;
+      },
+    ),
+    WatchCache: obx_int.EntityDefinition<WatchCache>(
+      model: _entities[2],
+      toOneRelations: (WatchCache object) => [],
+      toManyRelations: (WatchCache object) => {},
+      getId: (WatchCache object) => object.id,
+      setId: (WatchCache object, int id) {
+        object.id = id;
+      },
+      objectToFB: (WatchCache object, fb.Builder fbb) {
+        final noteOffset = fbb.writeString(object.note);
+        fbb.startTable(6);
+        fbb.addInt64(0, object.id);
+        fbb.addInt64(
+          1,
+          object.cachedMeditationWatchStartTime?.millisecondsSinceEpoch,
+        );
+        fbb.addInt64(3, object.elapsed);
+        fbb.addOffset(4, noteOffset);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final cachedMeditationWatchStartTimeValue = const fb.Int64Reader()
+            .vTableGetNullable(buffer, rootOffset, 6);
+        final cachedMeditationWatchStartTimeParam =
+            cachedMeditationWatchStartTimeValue == null
+            ? null
+            : DateTime.fromMillisecondsSinceEpoch(
+                cachedMeditationWatchStartTimeValue,
+              );
+        final elapsedParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          10,
+          0,
+        );
+        final noteParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 12, '');
+        final object = WatchCache(
+          cachedMeditationWatchStartTime: cachedMeditationWatchStartTimeParam,
+          elapsed: elapsedParam,
+          note: noteParam,
+        )..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+
+        return object;
+      },
+    ),
   };
 
   return obx_int.ModelDefinition(model, bindings);
-}
-
-/// [AppCache] entity fields to define ObjectBox queries.
-class AppCache_ {
-  /// See [AppCache.id].
-  static final id = obx.QueryIntegerProperty<AppCache>(
-    _entities[0].properties[0],
-  );
-
-  /// See [AppCache.cachedMeditationWatchStartTime].
-  static final cachedMeditationWatchStartTime = obx.QueryDateProperty<AppCache>(
-    _entities[0].properties[1],
-  );
-
-  /// See [AppCache.chantJsonPath].
-  static final chantJsonPath = obx.QueryStringProperty<AppCache>(
-    _entities[0].properties[2],
-  );
 }
 
 /// [MeditationRecord] entity fields to define ObjectBox queries.
 class MeditationRecord_ {
   /// See [MeditationRecord.id].
   static final id = obx.QueryIntegerProperty<MeditationRecord>(
-    _entities[1].properties[0],
+    _entities[0].properties[0],
   );
 
   /// See [MeditationRecord.meditationStartTime].
   static final meditationStartTime = obx.QueryDateProperty<MeditationRecord>(
-    _entities[1].properties[1],
+    _entities[0].properties[1],
   );
 
   /// See [MeditationRecord.meditationDuration].
   static final meditationDuration = obx.QueryIntegerProperty<MeditationRecord>(
-    _entities[1].properties[2],
+    _entities[0].properties[2],
   );
 
   /// See [MeditationRecord.meditationNote].
   static final meditationNote = obx.QueryStringProperty<MeditationRecord>(
-    _entities[1].properties[3],
+    _entities[0].properties[3],
+  );
+}
+
+/// [ChantCache] entity fields to define ObjectBox queries.
+class ChantCache_ {
+  /// See [ChantCache.id].
+  static final id = obx.QueryIntegerProperty<ChantCache>(
+    _entities[1].properties[0],
+  );
+
+  /// See [ChantCache.chantJsonPath].
+  static final chantJsonPath = obx.QueryStringProperty<ChantCache>(
+    _entities[1].properties[1],
+  );
+}
+
+/// [WatchCache] entity fields to define ObjectBox queries.
+class WatchCache_ {
+  /// See [WatchCache.id].
+  static final id = obx.QueryIntegerProperty<WatchCache>(
+    _entities[2].properties[0],
+  );
+
+  /// See [WatchCache.cachedMeditationWatchStartTime].
+  static final cachedMeditationWatchStartTime =
+      obx.QueryDateProperty<WatchCache>(_entities[2].properties[1]);
+
+  /// See [WatchCache.elapsed].
+  static final elapsed = obx.QueryIntegerProperty<WatchCache>(
+    _entities[2].properties[2],
+  );
+
+  /// See [WatchCache.note].
+  static final note = obx.QueryStringProperty<WatchCache>(
+    _entities[2].properties[3],
   );
 }

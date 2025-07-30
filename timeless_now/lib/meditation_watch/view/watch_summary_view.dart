@@ -8,14 +8,25 @@ import 'package:timeless_now/meditation_watch/widgets/watch_button.dart';
 import 'package:timeless_now/models/meditation_record.dart';
 
 class WatchSummaryView extends StatefulWidget {
-  const WatchSummaryView({super.key});
+  const WatchSummaryView({
+    this.initialNote = '',
+    super.key,
+  });
+
+  final String initialNote;
 
   @override
   State<WatchSummaryView> createState() => _WatchSummaryViewState();
 }
 
 class _WatchSummaryViewState extends State<WatchSummaryView> {
-  final _noteController = TextEditingController();
+  late final TextEditingController _noteController;
+
+  @override
+  void initState() {
+    _noteController = TextEditingController(text: widget.initialNote);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +163,7 @@ class _WatchSummaryViewState extends State<WatchSummaryView> {
                       label: const Text('Note'),
                       hintText: 'Take your note here...',
                       alignLabelWithHint: true,
-                      suffixIcon: InkWell(
+                      suffix: InkWell(
                         borderRadius: BorderRadius.circular(200),
                         onTap: () {
                           context.read<StopwatchBloc>().add(const UpdateNote());

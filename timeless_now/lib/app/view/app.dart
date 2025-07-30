@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeless_now/chant/view/chant_page.dart';
 import 'package:timeless_now/l10n/arb/app_localizations.dart';
 import 'package:timeless_now/meditation_watch/view/meditation_watch_page.dart';
-import 'package:timeless_now/repositories/app_cache_repository.dart';
+import 'package:timeless_now/repositories/cache/chant_cache_repository.dart';
+import 'package:timeless_now/repositories/cache/watch_cache_repository.dart';
 import 'package:timeless_now/repositories/meditation_record_repository.dart';
 import 'package:timeless_now/repositories/store_repository.dart';
 
@@ -25,8 +26,11 @@ class App extends StatelessWidget {
             create: (_) =>
                 MeditationRecordRepository(store: _storeRepository.store),
           ),
-          RepositoryProvider<AppCacheRepository>(
-            create: (_) => AppCacheRepository(store: _storeRepository.store),
+          RepositoryProvider<ChantCacheRepository>(
+            create: (_) => ChantCacheRepository(store: _storeRepository.store),
+          ),
+          RepositoryProvider<WatchCacheRepository>(
+            create: (_) => WatchCacheRepository(store: _storeRepository.store),
           ),
         ],
         child: MaterialApp(
