@@ -10,11 +10,15 @@ class TocBottomSheet extends ItemListBottomSheet<Chant> {
           selectedItem: selectedChant,
           items: chants,
           descriptionBuilder: (selectedItem) =>
-              selectedItem.selectedContent.title,
+              (selectedItem.selectedContent.title.isEmpty)
+                  ? selectedItem.defaultContent.title
+                  : selectedItem.selectedContent.title,
           contentBuilder: (currentItem, selectedItem) {
             return (
               currentItem.id == selectedItem.id,
-              currentItem.selectedContent.title,
+              (currentItem.selectedContent.title.isEmpty)
+                  ? currentItem.defaultContent.title
+                  : currentItem.selectedContent.title,
             );
           },
           description: 'chant',

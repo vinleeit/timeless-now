@@ -14,9 +14,11 @@ class ChantView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void showTOC(BuildContext context,
-        Chant currentChant,
-        List<Chant> chants,) {
+    void showTOC(
+      BuildContext context,
+      Chant currentChant,
+      List<Chant> chants,
+    ) {
       showModalBottomSheet<Chant>(
         context: context,
         showDragHandle: true,
@@ -27,21 +29,23 @@ class ChantView extends StatelessWidget {
           );
         },
       ).then(
-            (chant) {
+        (chant) {
           if (chant == null || !context.mounted) return;
           context.read<ChantBloc>().add(
-            ChangeChant(
-              index: chants.indexWhere(
+                ChangeChant(
+                  index: chants.indexWhere(
                     (element2) => element2.id == chant.id,
-              ),
-            ),
-          );
+                  ),
+                ),
+              );
         },
       );
     }
 
-    void showLanguageOption(Chant currentChant,
-        ChantContent currentContent,) {
+    void showLanguageOption(
+      Chant currentChant,
+      ChantContent currentContent,
+    ) {
       showModalBottomSheet<String?>(
         context: context,
         showDragHandle: true,
@@ -50,7 +54,7 @@ class ChantView extends StatelessWidget {
             selectedIso: currentContent.iso,
             isos: currentChant.contents.map((element) => element.iso).toList()
               ..sort(
-                    (a, b) => a.compareTo(b),
+                (a, b) => a.compareTo(b),
               ),
           );
         },
@@ -112,10 +116,7 @@ class ChantView extends StatelessWidget {
                 horizontal: 32,
               ).copyWith(
                 top: 8,
-                bottom: MediaQuery
-                    .of(context)
-                    .padding
-                    .bottom + 18,
+                bottom: MediaQuery.of(context).padding.bottom + 18,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -129,12 +130,11 @@ class ChantView extends StatelessWidget {
                           IconButton(
                             onPressed: (state.currentChantIndex == 0)
                                 ? null
-                                : () =>
-                                context.read<ChantBloc>().add(
-                                  ChangeChant(
-                                    index: state.currentChantIndex - 1,
-                                  ),
-                                ),
+                                : () => context.read<ChantBloc>().add(
+                                      ChangeChant(
+                                        index: state.currentChantIndex - 1,
+                                      ),
+                                    ),
                             icon: const Icon(Icons.arrow_back_ios_new_rounded),
                           ),
                           const SizedBox(width: 8),
@@ -144,33 +144,31 @@ class ChantView extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: (currentChant == null)
                                     ? null
-                                    : () =>
-                                    showTOC(
-                                      context,
-                                      currentChant,
-                                      state.chants,
-                                    ),
+                                    : () => showTOC(
+                                          context,
+                                          currentChant,
+                                          state.chants,
+                                        ),
                                 child: Text(
                                   (currentContent == null)
                                       ? ''
                                       : (currentContent.title.isEmpty)
-                                      ? currentChant!.defaultContent.title
-                                      : currentContent.title,
+                                          ? currentChant!.defaultContent.title
+                                          : currentContent.title,
                                 ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 8),
                           IconButton(
-                            onPressed:
-                            (state.currentChantIndex >= state.chants.length - 1)
+                            onPressed: (state.currentChantIndex >=
+                                    state.chants.length - 1)
                                 ? null
-                                : () =>
-                                context.read<ChantBloc>().add(
-                                  ChangeChant(
-                                    index: state.currentChantIndex + 1,
-                                  ),
-                                ),
+                                : () => context.read<ChantBloc>().add(
+                                      ChangeChant(
+                                        index: state.currentChantIndex + 1,
+                                      ),
+                                    ),
                             icon: const Icon(Icons.arrow_forward_ios_rounded),
                           ),
                         ],
@@ -216,17 +214,16 @@ class ChantView extends StatelessWidget {
                           child: BlocBuilder<ChantBloc, ChantState>(
                             builder: (context, state) {
                               final currentChant = state.currentChant;
-                              final currentContent = currentChant
-                                  ?.selectedContent;
+                              final currentContent =
+                                  currentChant?.selectedContent;
                               return ElevatedButton(
-                                onPressed:
-                                (currentChant == null || currentContent == null)
+                                onPressed: (currentChant == null ||
+                                        currentContent == null)
                                     ? null
-                                    : () =>
-                                    showLanguageOption(
-                                      currentChant,
-                                      currentContent,
-                                    ),
+                                    : () => showLanguageOption(
+                                          currentChant,
+                                          currentContent,
+                                        ),
                                 style: ButtonStyle(
                                   padding: WidgetStateProperty.all(
                                     const EdgeInsets.symmetric(
@@ -266,11 +263,10 @@ class ChantView extends StatelessWidget {
                             showModalBottomSheet<void>(
                               context: context,
                               showDragHandle: true,
-                              builder: (_) =>
-                                  BlocProvider.value(
-                                    value: context.read<ChantBloc>(),
-                                    child: const SettingsBottomSheet(),
-                                  ),
+                              builder: (_) => BlocProvider.value(
+                                value: context.read<ChantBloc>(),
+                                child: const SettingsBottomSheet(),
+                              ),
                             );
                           },
                           style: ButtonStyle(
