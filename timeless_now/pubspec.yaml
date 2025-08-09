@@ -1,6 +1,6 @@
 name: timeless_now
 description: A Flutter application containing Buddhism related services.
-version: 1.0.2+3
+version: 1.0.2+4
 publish_to: none
 
 environment:

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -19,7 +17,7 @@ class ChantView extends StatefulWidget {
 }
 
 class _ChantViewState extends State<ChantView> {
-  bool _isBottomReached = false;
+  double _hover = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -76,27 +74,22 @@ class _ChantViewState extends State<ChantView> {
     return NotificationListener(
       onNotification: (notification) {
         if (notification is ScrollMetricsNotification) {
+          // Runs once after init
           final scrollPos = notification.metrics.pixels;
           final scrollMaxExtent = notification.metrics.maxScrollExtent;
           setState(() {
-            _isBottomReached = scrollPos >= scrollMaxExtent - 5;
+            _hover = (scrollPos == scrollMaxExtent && scrollMaxExtent == 0)
+                ? -1
+                : scrollPos / scrollMaxExtent;
           });
-        } else if (notification is ScrollUpdateNotification) {
+        } else if (notification is ScrollEndNotification) {
           final scrollPos = notification.metrics.pixels;
           final scrollMaxExtent = notification.metrics.maxScrollExtent;
-          if (scrollPos <= 5) {
-            // PASS
-          } else if (scrollPos >= scrollMaxExtent - 5) {
-            setState(() {
-              _isBottomReached = true;
-            });
-          } else {
-            if (_isBottomReached) {
-              setState(() {
-                _isBottomReached = false;
-              });
-            } else {}
-          }
+
+
+          setState(() {
+            _hover = scrollPos / scrollMaxExtent;
+          });
         }
         return true;
       },
@@ -108,12 +101,7 @@ class _ChantViewState extends State<ChantView> {
         body: Column(
           children: [
             Expanded(
-              child: BlocConsumer<ChantBloc, ChantState>(
-                listenWhen: (prev, cur) =>
-                    prev.currentChant != cur.currentChant ||
-                    prev.currentChant?.selectedContent !=
-                        cur.currentChant?.selectedContent,
-                listener: (context, state) {},
+              child: BlocBuilder<ChantBloc, ChantState>(
                 builder: (context, state) {
                   final currentChant = state.currentChant;
                   if (currentChant == null) {
@@ -131,18 +119,40 @@ class _ChantViewState extends State<ChantView> {
                     '## $title\n$content',
                   );
                   return Scrollbar(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.symmetric(horizontal: 18),
-                      child: SelectionArea(
-                        child: Html(
-                          data: dataStr,
-                          style: {
-                            'body': Style(
-                              fontSize: FontSize(
-                                state.fontSize,
+                    child: ShaderMask(
+                      shaderCallback: (Rect rect) {
+                        final stops = <double>[
+                          ...((_hover <= 0.01) ? [0, 0] : [0, 0.1]),
+                          ...((_hover >= 0.99 || _hover == -1)
+                              ? [1, 1]
+                              : [0.9, 1]),
+                        ];
+                        return LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: const [
+                            Colors.purple,
+                            Colors.transparent,
+                            Colors.transparent,
+                            Colors.purple,
+                          ],
+                          stops: stops,
+                        ).createShader(rect);
+                      },
+                      blendMode: BlendMode.dstOut,
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
+                        child: SelectionArea(
+                          child: Html(
+                            data: dataStr,
+                            style: {
+                              'body': Style(
+                                fontSize: FontSize(
+                                  state.fontSize,
+                                ),
                               ),
-                            ),
-                          },
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -151,7 +161,7 @@ class _ChantViewState extends State<ChantView> {
               ),
             ),
             ColoredBox(
-              color: _isBottomReached
+              color: (_hover >= 0.95)
                   ? Theme.of(context).colorScheme.surface
                   : Theme.of(context).colorScheme.surfaceContainer,
               child: Padding(
