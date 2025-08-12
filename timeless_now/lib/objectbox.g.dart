@@ -15,6 +15,7 @@ import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_sync_flutter_libs/objectbox_sync_flutter_libs.dart';
 
 import 'models/meditation_record.dart';
+import 'repositories/cache/app_cache_repository.dart';
 import 'repositories/cache/chant_cache_repository.dart';
 import 'repositories/cache/watch_cache_repository.dart';
 
@@ -111,6 +112,28 @@ final _entities = <obx_int.ModelEntity>[
     relations: <obx_int.ModelRelation>[],
     backlinks: <obx_int.ModelBacklink>[],
   ),
+  obx_int.ModelEntity(
+    id: const obx_int.IdUid(5, 2406533184602389362),
+    name: 'AppCache',
+    lastPropertyId: const obx_int.IdUid(2, 468781796236649443),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 1732388914551698040),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(2, 468781796236649443),
+        name: 'lastVisitedRouteName',
+        type: 9,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[],
+  ),
 ];
 
 /// Shortcut for [obx.Store.new] that passes [getObjectBoxModel] and for Flutter
@@ -151,7 +174,7 @@ Future<obx.Store> openStore({
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(4, 4490759528521803291),
+    lastEntityId: const obx_int.IdUid(5, 2406533184602389362),
     lastIndexId: const obx_int.IdUid(0, 0),
     lastRelationId: const obx_int.IdUid(0, 0),
     lastSequenceId: const obx_int.IdUid(0, 0),
@@ -291,6 +314,36 @@ obx_int.ModelDefinition getObjectBoxModel() {
         return object;
       },
     ),
+    AppCache: obx_int.EntityDefinition<AppCache>(
+      model: _entities[3],
+      toOneRelations: (AppCache object) => [],
+      toManyRelations: (AppCache object) => {},
+      getId: (AppCache object) => object.id,
+      setId: (AppCache object, int id) {
+        object.id = id;
+      },
+      objectToFB: (AppCache object, fb.Builder fbb) {
+        final lastVisitedRouteNameOffset = fbb.writeString(
+          object.lastVisitedRouteName,
+        );
+        fbb.startTable(3);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(1, lastVisitedRouteNameOffset);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final lastVisitedRouteNameParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 6, '');
+        final object = AppCache(lastVisitedRouteName: lastVisitedRouteNameParam)
+          ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+
+        return object;
+      },
+    ),
   };
 
   return obx_int.ModelDefinition(model, bindings);
@@ -351,5 +404,18 @@ class WatchCache_ {
   /// See [WatchCache.note].
   static final note = obx.QueryStringProperty<WatchCache>(
     _entities[2].properties[3],
+  );
+}
+
+/// [AppCache] entity fields to define ObjectBox queries.
+class AppCache_ {
+  /// See [AppCache.id].
+  static final id = obx.QueryIntegerProperty<AppCache>(
+    _entities[3].properties[0],
+  );
+
+  /// See [AppCache.lastVisitedRouteName].
+  static final lastVisitedRouteName = obx.QueryStringProperty<AppCache>(
+    _entities[3].properties[1],
   );
 }

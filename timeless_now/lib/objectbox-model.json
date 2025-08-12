@@ -79,9 +79,28 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "5:2406533184602389362",
+      "lastPropertyId": "2:468781796236649443",
+      "name": "AppCache",
+      "properties": [
+        {
+          "id": "1:1732388914551698040",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:468781796236649443",
+          "name": "lastVisitedRouteName",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "4:4490759528521803291",
+  "lastEntityId": "5:2406533184602389362",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
