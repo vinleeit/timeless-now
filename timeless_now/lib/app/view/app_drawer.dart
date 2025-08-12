@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:timeless_now/chant/view/chant_page.dart';
+import 'package:timeless_now/meditation_watch/view/meditation_watch_page.dart';
+import 'package:timeless_now/repositories/cache/app_cache_repository.dart';
+
+class AppDrawer extends StatelessWidget {
+  const AppDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).padding.top + 12,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Card(
+              margin: const EdgeInsets.only(right: 16),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.horizontal(
+                  right: Radius.circular(8),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Tiratana Upasana',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    const Text('Version 1.1.0'),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (final map in {
+                    'Meditation Watch': MeditationWatchPage.routeName,
+                    'Chant': ChantPage.routeName,
+                  }.entries)
+                    ElevatedButton(
+                      onPressed: () {
+                        if (map.value ==
+                            ModalRoute.of(context)?.settings.name) {
+                          return;
+                        }
+
+                        Navigator.pushReplacementNamed(
+                          context,
+                          map.value,
+                        );
+                        context.read<AppCacheRepository>()
+                          ..data.lastVisitedRouteName = map.value
+                          ..flush();
+                      },
+                      style: ButtonStyle(
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        backgroundColor: WidgetStateProperty.all(
+                          (map.value == ModalRoute.of(context)?.settings.name)
+                              ? Theme.of(context).primaryColor
+                              : null,
+                        ),
+                        foregroundColor: WidgetStateProperty.all(
+                          (map.value == ModalRoute.of(context)?.settings.name)
+                              ? Colors.white
+                              : null,
+                        ),
+                        overlayColor: WidgetStateProperty.all(
+                          (map.value == ModalRoute.of(context)?.settings.name)
+                              ? Colors.white.withAlpha(20)
+                              : null,
+                        ),
+                      ),
+                      child: Text(map.key),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

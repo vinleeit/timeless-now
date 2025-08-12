@@ -1,0 +1,122 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "2:6949642974877216044",
+      "lastPropertyId": "4:6288952347734034313",
+      "name": "MeditationRecord",
+      "properties": [
+        {
+          "id": "1:4300879540340383976",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6447807786091323714",
+          "name": "meditationStartTime",
+          "type": 10
+        },
+        {
+          "id": "3:9062785543077691015",
+          "name": "meditationDuration",
+          "type": 6
+        },
+        {
+          "id": "4:6288952347734034313",
+          "name": "meditationNote",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:4219723709065808279",
+      "lastPropertyId": "3:284770491881884666",
+      "name": "ChantCache",
+      "properties": [
+        {
+          "id": "1:6566735793837556905",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "3:284770491881884666",
+          "name": "chantJsonPath",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:4490759528521803291",
+      "lastPropertyId": "5:2123220754852059554",
+      "name": "WatchCache",
+      "properties": [
+        {
+          "id": "1:5953587341173696777",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8191091518484814759",
+          "name": "cachedMeditationWatchStartTime",
+          "type": 10
+        },
+        {
+          "id": "4:2589957026637105673",
+          "name": "elapsed",
+          "type": 6
+        },
+        {
+          "id": "5:2123220754852059554",
+          "name": "note",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:2406533184602389362",
+      "lastPropertyId": "2:468781796236649443",
+      "name": "AppCache",
+      "properties": [
+        {
+          "id": "1:1732388914551698040",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:468781796236649443",
+          "name": "lastVisitedRouteName",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "5:2406533184602389362",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [
+    1929920104100698143
+  ],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    6616827391750416634,
+    8484852593009153436,
+    5403878557590192250,
+    1178143364910113680,
+    4144645317619590000
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -1,0 +1,108 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="meditation_alarm" id="DlyjoeoNNeYBsaOCErai">
+    <mxGraphModel dx="819" dy="479" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-5" value="" style="rounded=0;whiteSpace=wrap;html=1;recursiveResize=0;dropTarget=1;container=1;collapsible=0;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="1200" width="400" height="670" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;recursiveResize=0;container=1;collapsible=0;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-5">
+          <mxGeometry x="90" y="180" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-2" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.alarm_clock;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-3">
+          <mxGeometry x="60.5" y="40" width="99" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-4" value="Press to start" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-3">
+          <mxGeometry x="60" y="160" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-8" value="&lt;h1&gt;Meditation Clock&lt;/h1&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-5">
+          <mxGeometry x="40" y="40" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-10" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-5">
+          <mxGeometry x="330" y="40" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-15" value="" style="group" vertex="1" connectable="0" parent="m0z9z2S5PYO1JigaNAuD-5">
+          <mxGeometry x="130" y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-11" value="Alarm" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-15">
+          <mxGeometry width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-13" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="m0z9z2S5PYO1JigaNAuD-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="69.71000000000004" y="30" as="sourcePoint" />
+            <mxPoint x="69.71000000000004" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-14" value="History" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-15">
+          <mxGeometry x="80" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-16" value="" style="ellipse;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-5">
+          <mxGeometry x="270" y="170" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="m0z9z2S5PYO1JigaNAuD-17" value="" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.settings_office_365;" vertex="1" parent="m0z9z2S5PYO1JigaNAuD-16">
+          <mxGeometry x="10" y="10" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-3" value="Start timer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="240" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="TsFPAwtQE8Byn6japJQQ-4" target="TsFPAwtQE8Byn6japJQQ-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-4" value="End timer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="360" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="TsFPAwtQE8Byn6japJQQ-5" target="TsFPAwtQE8Byn6japJQQ-20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-5" value="Set alarm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="480" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="TsFPAwtQE8Byn6japJQQ-6" target="TsFPAwtQE8Byn6japJQQ-14" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="499.9999999999998" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-6" value="Set reminder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="600" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="TsFPAwtQE8Byn6japJQQ-7" target="TsFPAwtQE8Byn6japJQQ-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-7" value="Progress tracking/history" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="720" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="TsFPAwtQE8Byn6japJQQ-8" target="TsFPAwtQE8Byn6japJQQ-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-8" value="Take notes in one session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="1000" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-13" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Numbers:&lt;/span&gt;&lt;div style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;ul&gt;&lt;li&gt;Average meditation time daily&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;&quot;&gt;Number of days meditation per month&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;&quot;&gt;Number of uposatha days per month&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;&quot;&gt;Daily meditation time&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fillColor=none;labelBackgroundColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="440" y="720" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-14" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Type of reminder:&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;Uposatha days (only on uposatha days)&lt;/li&gt;&lt;li&gt;Event days (e.g. passing away of someone)&lt;/li&gt;&lt;li&gt;Weekly days (repeat selected days every week)&lt;/li&gt;&lt;li&gt;Certain days on calendar (once only in the selected days on the calendar)&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="440" y="600" width="450" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="TsFPAwtQE8Byn6japJQQ-15" target="TsFPAwtQE8Byn6japJQQ-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-15" value="Calendar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="120" y="880" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-16" value="Includes:&lt;div&gt;&lt;ul&gt;&lt;li&gt;Birthday&lt;/li&gt;&lt;li&gt;Yearly event (e.g. passing away of someone)&lt;/li&gt;&lt;li&gt;Uposatha days&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fillColor=none;labelBackgroundColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="440" y="880" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-18" value="Tweaks:&lt;div&gt;&lt;ul&gt;&lt;li&gt;Need attention or not (e.g. a question to be asked or not)&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fillColor=none;labelBackgroundColor=none;align=left;" parent="1" vertex="1">
+          <mxGeometry x="440" y="1000" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-20" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Type of alarm:&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;Finishing&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Forced finish: end timer triggered automatically&lt;/li&gt;&lt;li&gt;Not forced: end timer needs to be pressed manually&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Progress:&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Tell progress periodically (e.g. every 15 minutes, 30 minutes, 1 hour, 2 hours)&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="440" y="480" width="560" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TsFPAwtQE8Byn6japJQQ-22" value="&lt;div style=&quot;&quot;&gt;End times and record start time, end time, and date&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="440" y="380" width="320" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
